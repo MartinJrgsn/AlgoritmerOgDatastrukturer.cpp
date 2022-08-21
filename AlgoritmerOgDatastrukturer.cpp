@@ -11,7 +11,4 @@ int main()
 	//lenketListe->insertNode(175);
 	//lenketListe->insertNode(250);
 	//lenketListe->printList();
-
-	std::cout << "TESTING AFTER ORPHAN BRANCHING";
-
 }
