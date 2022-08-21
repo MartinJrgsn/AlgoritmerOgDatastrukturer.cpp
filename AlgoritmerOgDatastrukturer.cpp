@@ -6,7 +6,12 @@
 
 int main()
 {
-    std::cout << "Linked list\n";
-
     enkeltLenkedeListe::presetRun();
+	//auto lenketListe = std::make_shared<enkeltLenkedeListe::singlyLinkedList<int>>(100);
+	//lenketListe->insertNode(175);
+	//lenketListe->insertNode(250);
+	//lenketListe->printList();
+
+
+
 }

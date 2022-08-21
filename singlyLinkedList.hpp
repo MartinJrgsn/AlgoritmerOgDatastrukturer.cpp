@@ -1,74 +1,90 @@
 #pragma once
 #include <iostream>
 
-template <typename T>
-class Node {
-public:
-	Node(T value)
-		:m_value{ value }
-	{
-		if (!m_next) {
-			std::cout << "Node created, value " << m_value << std::endl;
-		}
-	}
-
-	T getValue() {
-		return m_value;
-	}
-
-	void setValue(T value) {
-		m_value = { value };
-	}
-
-	std::shared_ptr<Node<T>> getNext() {
-		return m_next;
-	}
-
-	void setNext(std::shared_ptr<Node<T>> next) {
-		m_next = { next };
-	}
-
-private:
-	T m_value{};
-	std::shared_ptr<Node<T>> m_next{ nullptr };
-};
-
-template <typename T>
-class singlyLinkedList
-{
-public:
-	singlyLinkedList(T value)
-		:m_value{ value }
-	{
-		newNode = std::make_shared<Node<T>>(m_value);
-		std::cout << "Singly linked list created\nRoot node value: " << newNode->Node<T>::getValue() << std::endl;
-	}
-
-	void printList(std::shared_ptr<singlyLinkedList<T>> list) {
-		std::cout << std::endl;
-	}
-
-	void insertNode(T value) {
-		auto nextNode = std::make_shared<Node<T>>(value);
-	}
-
-private:
-	T m_value;
-	std::shared_ptr<Node<T>> newNode{ nullptr };
-};
-
 namespace enkeltLenkedeListe {
 
+	template <typename T>
+	class Node {
+	public:
+		Node(T value)
+			:m_value{ value }, m_next{ nullptr } {}
+
+		T getValue() {
+			return m_value; // O(1)
+		}
+
+		std::shared_ptr<Node<T>> getNext() {
+			return m_next; // O(1)
+		}
+
+		void setNext(std::shared_ptr<Node<T>> next) {
+			m_next = { next }; // O(1)
+		}
+
+	private:
+		T m_value{};
+		std::shared_ptr<Node<T>> m_next{ nullptr };
+	};
+
+	template <typename T>
+	class singlyLinkedList
+	{
+	public:
+		singlyLinkedList(T value)
+		{
+			m_node = std::make_shared<Node<T>>(value); // O(1)
+		}
+
+		void printList() {
+			auto newNode = m_node; // O(1)
+			while (newNode != NULL) { // O(n) {
+				std::cout << newNode->Node<T>::getValue() << "->"; // O(1)
+				newNode = newNode->Node<T>::getNext(); // O(1)
+			}
+			std::cout << std::endl; // O(1)
+		}
+
+		void insertNode(T value) {
+			auto head = m_node; // O(1)
+			auto nextNode = std::make_shared<Node<T>>(value); // O(1)
+
+			while (head->getNext() != NULL) { // O(n) {
+				head = head->Node<T>::getNext(); // O(1)
+			}
+
+			head->Node<T>::setNext(nextNode); // O(1)
+		}
+
+	private:
+		std::shared_ptr<Node<T>> m_node{ nullptr };
+	};
+
+
 	void presetRun() {
-		auto linkedList = std::make_shared<singlyLinkedList<int>>(100);
+		std::cout << "Linked list with integers\n\n";
+
+		auto linkedList = std::make_shared<singlyLinkedList<int>>(100); // Initializing the linked list with it's first value.
+
 		linkedList->insertNode(200);
 		linkedList->insertNode(300);
+		linkedList->insertNode(400);
+		linkedList->insertNode(500);
+		linkedList->insertNode(600);
+		linkedList->insertNode(700);
 
-		//auto newNode = std::make_shared<Node<int>>(100);
-		/*newNode->setNext(200);
-		newNode->setNext(300);*/
+		linkedList->printList();
 
-		//std::cout << newNode->getValue();
+		std::cout << "\n\n\nlinked list with strings\n\n";
+		auto linkedListString = std::make_shared<singlyLinkedList<std::string>>("Head");
+
+		linkedListString->insertNode("second");
+		linkedListString->insertNode("third");
+		linkedListString->insertNode("fourth");
+		linkedListString->insertNode("fifth");
+		linkedListString->insertNode("sixth");
+		linkedListString->insertNode("tail");
+
+		linkedListString->printList();
 	}
-}
 
+}
