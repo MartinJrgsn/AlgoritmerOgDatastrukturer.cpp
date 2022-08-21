@@ -46,13 +46,12 @@ namespace enkeltLenkedeListe {
 
 		void insertNode(T value) {
 			auto head = m_node; // O(1)
-			auto nextNode = std::make_shared<Node<T>>(value); // O(1)
 
 			while (head->getNext() != NULL) { // O(n) {
 				head = head->Node<T>::getNext(); // O(1)
 			}
 
-			head->Node<T>::setNext(nextNode); // O(1)
+			head->Node<T>::setNext(std::make_shared<Node<T>>(value)); // O(1)
 		}
 
 	private:
