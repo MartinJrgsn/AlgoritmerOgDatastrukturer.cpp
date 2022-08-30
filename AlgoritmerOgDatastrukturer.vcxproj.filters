@@ -24,7 +24,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="singlyLinkedList.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Datastrukturer</Filter>
+    </ClInclude>
+    <ClInclude Include="DoublyLinkedList.h">
+      <Filter>Header Files\Datastrukturer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

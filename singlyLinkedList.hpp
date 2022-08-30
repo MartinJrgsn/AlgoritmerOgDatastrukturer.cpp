@@ -55,6 +55,13 @@ namespace enkeltLenkedeListe {
 			head->Node<T>::setNext(nextNode); // O(1)
 		}
 
+		/*std::shared_ptr<Node<t>> removeNode() {
+			T data = heads getVal()
+				head = head->getNext()
+				--size;
+			return data;
+		}*/
+
 	private:
 		std::shared_ptr<Node<T>> m_node{ nullptr };
 	};

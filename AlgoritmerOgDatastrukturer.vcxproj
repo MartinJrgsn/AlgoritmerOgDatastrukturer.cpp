@@ -130,6 +130,7 @@
     <ClCompile Include="AlgoritmerOgDatastrukturer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="singlyLinkedList.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
