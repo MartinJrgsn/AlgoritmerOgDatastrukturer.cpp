@@ -9,5 +9,5 @@ int main()
 {
     //enkeltLenkedeListe::presetRun();
 
-    DobbeltLenketListe::presetRun();
+    //DobbeltLenketListe::presetRun();
 }

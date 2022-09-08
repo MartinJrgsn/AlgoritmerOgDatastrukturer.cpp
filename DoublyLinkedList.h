@@ -1,48 +1,69 @@
 #pragma once
+#include <iostream>
 
 namespace DobbeltLenketListe {
+
+	//DLL Node:
+
 	template <typename T>
 	class Node {
+		using nodePtr = std::shared_ptr<Node<T>>;
 	public:
-		Node(T value)
-			:m_value{ value }, m_next{ nullptr }, m_prev{ nullptr } {}
-
-		T getValue() {
-			return m_value; // O(1)
-		}
-
-		std::shared_ptr<Node<T>> getNext() {
-			return m_next; // O(1)
-		}
-
-		void setNext(std::shared_ptr<Node<T>> next) {
-			m_next = { next }; // O(1)
-		}
-
-		std::shared_ptr<Node<T>> getPrev() {
-			return m_prev; // O(1)
-		}
-
-		void setPrev(std::shared_ptr<Node<T>> prev) {
-			m_prev = { prev }; // O(1)
-		}
-
-
+		Node(const T& value, nodePtr prev, nodePtr next);
+		T getValue() const;
+		nodePtr getNext() const;
+		nodePtr getPrev() const;
 
 	private:
-		std::shared_ptr<Node<T>> m_prev{ nullptr };
+		nodePtr m_prev{ nullptr };
 		T m_value{};
-		std::shared_ptr<Node<T>> m_next{ nullptr };
+		nodePtr m_next{ nullptr };
 	};
+
+	template<typename T>
+	inline DobbeltLenketListe::Node<T>::Node(const T& value, nodePtr prev, nodePtr next)
+		:m_value{ value }, m_prev{ prev }, m_next{ next }
+	{
+		std::cout << "Node constructor called\n";
+	}
+
+	template<typename T>
+	inline T Node<T>::getValue() const
+	{
+		return m_value;
+	}
+
+	template <typename T>
+	inline std::shared_ptr<Node<T>> Node<T>::getNext() const
+	{
+		return m_next;
+	}
+
+	template<typename T>
+	inline std::shared_ptr<Node<T>> Node<T>::getPrev() const
+	{
+		return m_prev;
+	}
+
+	// Doubly Linked List
+
+
+
+
+
+
+
+
+
+
+
 
 	template <typename T>
 	class DoublyLinkedList
 	{
+		using nodePtr = std::shared_ptr<Node<T>>;
 	public:
-		DoublyLinkedList(T value)
-		{
-			m_node = std::make_shared<Node<T>>(value); // O(1)
-		}
+		DoublyLinkedList();
 
 		void printList() {
 			auto newNode = m_node; // O(1)
@@ -54,19 +75,7 @@ namespace DobbeltLenketListe {
 			std::cout << std::endl; // O(1)
 		}
 
-		void insertLast(T value) {
-			auto head = m_node; // O(1)
-			auto nextNode = std::make_shared<Node<T>>(value); // O(1)
-
-			while (head->getNext() != NULL) { // O(n) {
-				head = head->Node<T>::getNext(); // O(1)
-			}
-
-			head->Node<T>::setNext(nextNode); // O(1)
-			nextNode->Node<T>::setPrev(head);
-		}
-
-		void insertFront(T value) {
+		void insertHead(T value) {
 			setHead();
 			auto node = m_node; // O(1)
 			auto head = std::make_shared<Node<T>>(value); // O(1)
@@ -79,31 +88,41 @@ namespace DobbeltLenketListe {
 			head->Node<T>::setNext(node);
 		}
 
+		void insertTail(T value) {
+			auto head = m_node; // O(1)
+			auto nextNode = std::make_shared<Node<T>>(value); // O(1)
+
+			while (head->getNext() != NULL) { // O(n) {
+				head = head->Node<T>::getNext(); // O(1)
+			}
+
+			head->Node<T>::setNext(nextNode); // O(1)
+			nextNode->Node<T>::setPrev(head);
+		}
+
 
 	private:
 
-		void setHead() {
-			auto head = m_node;
-			while (head->Node<T>::getPrev() != NULL) 
-			{
-				head = head->Node<T>::getPrev();
-			}
-			m_node = head;
-		}
-
-		std::shared_ptr<Node<T>> m_node{ nullptr };
+		nodePtr m_head{ nullptr };
+		nodePtr m_tail{ nullptr };
 	};
 
-	void presetRun() {
-		auto linkedList = std::make_shared<DoublyLinkedList<int>>(100); // Initializing the linked list with it's first value.
+	//void presetRun() {
+	//	auto linkedList = std::make_shared<DoublyLinkedList<int>>(100); // Initializing the linked list with it's first value.
 
-		linkedList->insertLast(200);
-		linkedList->insertFront(300);
-		//linkedList->insertNode(400);
-		//linkedList->insertNode(500);
-		//linkedList->insertNode(600);
-		//linkedList->insertNode(700);
+	//	linkedList->insertLast(200);
+	//	linkedList->insertFront(300);
+	//	//linkedList->insertNode(400);
+	//	//linkedList->insertNode(500);
+	//	//linkedList->insertNode(600);
+	//	//linkedList->insertNode(700);
 
-		linkedList->printList();
+	template<typename T>
+	inline DoublyLinkedList<T>::DoublyLinkedList()
+		:m_head
+	{
 	}
+
+	//	linkedList->printList();
+	//}
 }
