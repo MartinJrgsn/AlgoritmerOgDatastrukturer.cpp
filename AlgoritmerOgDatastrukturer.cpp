@@ -3,16 +3,11 @@
 
 #include <iostream>
 #include "singlyLinkedList.hpp"
+#include "DoublyLinkedList.h"
 
 int main()
 {
-	// Enkelt lenkede lister
+    //enkeltLenkedeListe::presetRun();
 
-    enkeltLenkedeListe::presetRun();
-	//auto lenketListe = std::make_shared<enkeltLenkedeListe::singlyLinkedList<int>>(100);
-	//lenketListe->insertNode(175);
-	//lenketListe->insertNode(250);
-	//lenketListe->printList();
-
-	// Dobbelt lenkede lister //TODO
+    DobbeltLenketListe::presetRun();
 }
