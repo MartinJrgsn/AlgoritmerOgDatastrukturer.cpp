@@ -24,6 +24,7 @@
     <ProjectGuid>{0736cbab-bea5-4fa0-b84d-3ffe80f30cd6}</ProjectGuid>
     <RootNamespace>AlgoritmerOgDatastrukturer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>AlgoritmerOgDatastrukturer.cpp</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

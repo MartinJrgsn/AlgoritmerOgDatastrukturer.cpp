@@ -6,10 +6,13 @@
 
 int main()
 {
+	// Enkelt lenkede lister
+
     enkeltLenkedeListe::presetRun();
 	//auto lenketListe = std::make_shared<enkeltLenkedeListe::singlyLinkedList<int>>(100);
 	//lenketListe->insertNode(175);
 	//lenketListe->insertNode(250);
 	//lenketListe->printList();
-	std::cout << "TEST";
+
+	// Dobbelt lenkede lister //TODO
 }
