@@ -65,6 +65,49 @@ namespace DobbeltLenketListe {
 	public:
 		DoublyLinkedList();
 
+		void insertHead(T data);
+		void insertTail(T data);
+
+		void removeTail();
+
+		T getHead();
+		T getTail();
+
+	private:
+
+		nodePtr m_head{};
+		nodePtr m_tail{};
+	};
+
+	void presetRun() {
+		std::cout << "newTEST\n";
+		auto DLL = std::make_shared<DoublyLinkedList<T>>();
+
+		std::cout << "Testing doubly\n";
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 		void printList() {
 			auto newNode = m_node; // O(1)
 			//while (newNode != NULL) { // O(n) {
@@ -100,15 +143,7 @@ namespace DobbeltLenketListe {
 			nextNode->Node<T>::setPrev(head);
 		}
 
-
-	private:
-
-		nodePtr m_head{ nullptr };
-		nodePtr m_tail{ nullptr };
-	};
-
-	//void presetRun() {
-	//	auto linkedList = std::make_shared<DoublyLinkedList<int>>(100); // Initializing the linked list with it's first value.
+		//	auto linkedList = std::make_shared<DoublyLinkedList<int>>(100); // Initializing the linked list with it's first value.
 
 	//	linkedList->insertLast(200);
 	//	linkedList->insertFront(300);
@@ -117,12 +152,5 @@ namespace DobbeltLenketListe {
 	//	//linkedList->insertNode(600);
 	//	//linkedList->insertNode(700);
 
-	template<typename T>
-	inline DoublyLinkedList<T>::DoublyLinkedList()
-		:m_head
-	{
-	}
-
 	//	linkedList->printList();
-	//}
-}
+*/

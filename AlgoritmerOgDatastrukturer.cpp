@@ -2,12 +2,16 @@
 //
 
 #include <iostream>
-#include "singlyLinkedList.hpp"
-#include "DoublyLinkedList.h"
+//#include "singlyLinkedList.hpp"
+//#include "DoublyLinkedList.h"
+#include "DoublyLinkedList.hpp"
 
 int main()
 {
-    //enkeltLenkedeListe::presetRun();
+    std::cout << "Main test\n";
 
+    //enkeltLenkedeListe::presetRun();
     //DobbeltLenketListe::presetRun();
+    dobbeltLenketListe::presetRun();
+
 }
